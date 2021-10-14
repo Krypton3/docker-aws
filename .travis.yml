@@ -1,0 +1,14 @@
+# needs root level access to do the tests
+sudo: required
+
+# we need a copy of docker ready to go
+services:
+  - docker
+
+# build the developer version docker image
+before_install:
+  - docker build -t test9 -f Dockerfile.dev .
+
+# instructing travis CI to test on the app
+script:
+  - docker run -e CI=true test9 npm run test
