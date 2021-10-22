@@ -12,3 +12,17 @@ before_install:
 # instructing travis CI to test on the app
 script:
   - docker run -e CI=true test9 npm run test
+
+# automatic deploy to elastic beanstalk
+deploy:
+  provider: elasticbeanstalk
+  region: "ca-central-1"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-ca-central-1-859458398387"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
