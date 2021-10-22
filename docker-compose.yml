@@ -1,13 +1,8 @@
 version: '3'
-
 services:
   web:
-    stdin_open: true
-    build: 
-      context: . # considering Dockerfile.dev in the same directory
-      dockerfile: Dockerfile.dev
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000" # port mapping
-    volumes:
-      - /app/node_modules # don't mess with node_modules
-      - .:/app # copy everything inside container
+      - '80:80'
