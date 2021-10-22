@@ -17,4 +17,3 @@ FROM nginx
 EXPOSE 80
 # conpying the builder to production container
 COPY --from=builder /app/build /usr/share/nginx/html
-
